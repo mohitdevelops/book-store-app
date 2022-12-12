@@ -1,0 +1,38 @@
+.logo img{
+    height: 50px;
+    width: auto;
+}
+.header{
+    width: 100%;
+    background-color: #fff;
+    padding: 15px 0; 
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.07);   
+}
+.header__container{
+    display: flex;
+    justify-content: space-between;
+}
+.right__box{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    line-height: 1;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 500;    
+}
+ul.nav{
+    display: flex;
+    gap: 30px;    
+}
+ul.nav a {
+    transition: 0.3s ease;
+    color: var(--primary-red);
+}
+ul.nav a:hover{
+    color: var(--primary-dark-red);
+}
+.cart__items{
+    background-color: var(--primary-dark-red);
+    padding: 6px 10px;
+}

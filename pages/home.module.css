@@ -1,0 +1,91 @@
+/* Banner Area  */
+.banner__wrap{
+    width: 100%;
+    height: 500px;
+    background-image: url(../public/banner.webp);
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    padding: 100px 0;
+    background-repeat: no-repeat;
+    position: relative;
+    z-index: 1;
+}
+.banner__wrap::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0,0,0,0));
+    z-index: -1;
+}
+.banner__wrap img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+.banner__wrap .banner__text{
+    width: 100%;
+    text-align: center;    
+    color: #fff;
+    position: relative;
+    z-index: 2;
+}
+.banner__wrap .banner__text h1{
+    font-size: 3.5rem;
+    text-transform: capitalize;
+    font-weight: 800;
+    margin: 8px 0 10px;
+    line-height: 1.2;
+}
+.banner__wrap .banner__text span{
+    background-color: var(--primary-red);
+    padding: 4px 8px;
+    font-style: italic;
+}
+.banner__wrap .banner__text p{
+    font-size: 1.5rem;
+    line-height: 1.3;
+}
+/* Banner Area  End*/
+
+/* Orders */
+
+/* Orders End */
+
+/* About us  */
+.intro__wrap .wrapper{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}  
+.intro__wrap .image img{
+    width: 100%;
+    height: auto;
+}
+.intro__wrap .image{
+    flex: 1;
+} 
+.intro__wrap .content{
+    flex: 1;
+}
+/* About us End*/
+
+/* Blog Start  */
+
+
+/* Blog End  */
+
+
+
+@media screen and (min-width: 991px) {
+    .banner__wrap .banner__text{
+        width: 45%;
+        text-align: left;
+    }
+    
+}

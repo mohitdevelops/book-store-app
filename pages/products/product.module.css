@@ -1,0 +1,71 @@
+.product_detail_wrap{
+    width: 100%;
+    padding: 50px 0;
+    display: flex;
+    gap: 30px;
+}
+.product_detail_wrap .image_wrap{
+    max-width: 350px;
+    width: 100%;
+    /* border: solid 1px red; */
+    background-color: rgb(79 79 79 / 4%);
+}
+.product_detail_wrap .image_wrap img{
+    width: 100%;
+}
+.product_detail_wrap .detail_wrap{
+    flex: 1;
+    /* background-color: aqua; */
+}
+.product_detail_wrap .detail_wrap > span{
+    text-transform: uppercase;
+    font-weight: 500;
+    color: #a2a2a2;
+    letter-spacing: 1px;
+}
+.product_detail_wrap .detail_wrap > h3{
+    font-size: 2rem;
+    font-weight: 700;
+    color: #000;
+    margin: 0 0 20px;
+    line-height: 1;
+}
+.product_detail_wrap .detail_wrap .bottom_wrap{
+    display: flex;
+    gap: 30px;
+}
+.product_detail_wrap .detail_wrap .bottom_wrap .desc{
+    flex: 1;
+}
+.product_detail_wrap .detail_wrap .bottom_wrap .author{
+    max-width: 250px;
+    flex: 1;
+}
+.product_detail_wrap .detail_wrap .bottom_wrap .author h3{
+    color: #a2a2a2;
+    line-height: 1.2;
+    font-weight: 500;
+    font-size: 1rem;
+}
+.product_detail_wrap .detail_wrap .bottom_wrap .author h3 span{
+    display: block;
+    color: #000;
+    margin-top: 10px;
+}
+.product_detail_wrap .detail_wrap .bottom_wrap .author .icon{
+    font-size: 1.5rem;
+    color: #a2a2a2;
+}
+table.table_box{
+    border-spacing: 0;
+    border-collapse: separate;
+}
+table.table_box td{
+    padding: 4px 10px;
+}
+table.table_box tr{
+    background-color: rgb(79 79 79 / 4%);
+}
+table.table_box tr:nth-child(2n){
+    background-color: #fff;
+}
