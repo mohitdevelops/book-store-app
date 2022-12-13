@@ -1,5 +1,6 @@
 import { Fragment } from "react";
 import BookProducts from "../../components/book-items/BookProducts"
+import Footer from "../../components/ui/Footer";
 import Header from "../../components/ui/Header";
 
 export default function Products(props) {
@@ -9,6 +10,7 @@ export default function Products(props) {
 			<section>
 				<BookProducts booksData={props.fetchedData} />
 			</section>
+			<Footer />
 		</Fragment>
 	);
 }

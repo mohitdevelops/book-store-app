@@ -1,6 +1,6 @@
 import Link from "next/link";
 // import { HiShoppingCart } from "react-icons/hi";
-import classes from "./Header.module.css";
+import classes from "./ui.module.css";
 import Image from "next/image";
 import Logo from "../../public/logo.png";
 
@@ -8,7 +8,7 @@ const navbar = [
 	{ id: "nav1", url: "/", text: "Home" },
 	{ id: "nav3", url: "/products", text: "Products" },
 	{ id: "nav2", url: "/posts", text: "Blogs" },
-	{ id: "nav4", url: "/contact", text: "Contact us" },
+	// { id: "nav4", url: "/contact", text: "Contact us" },
 ];
 
 export default function Header() {

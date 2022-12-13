@@ -53,10 +53,6 @@
 }
 /* Banner Area  End*/
 
-/* Orders */
-
-/* Orders End */
-
 /* About us  */
 .intro__wrap .wrapper{
     display: flex;
@@ -75,10 +71,22 @@
 }
 /* About us End*/
 
-/* Blog Start  */
-
-
-/* Blog End  */
+/* Products Start  */
+.home_products_wrap .home_products{
+    text-align: center;
+    padding: 15px;
+    /* background-color: rgba(212, 212, 212, 0.25); */
+}
+.home_products_wrap .home_products h3{
+    border-top: solid 2px #eee;
+    padding: 10px;
+    font-size: 17px;
+    line-height: 1.2;    
+}
+.home_products_wrap .home_products img{
+    width: 100%;
+}
+/* Products End  */
 
 
 

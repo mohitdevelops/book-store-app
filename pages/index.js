@@ -4,8 +4,20 @@ import Image from "next/image";
 import about_thumb from "../public/about_thumb.png";
 import classes from "./home.module.css";
 import Link from "next/link";
+import Slider from "react-slick";
+import Footer from "../components/ui/Footer";
 
-export default function Home() {
+export default function Home({ fetchedData, fetchedSocialLinks }) {
+	const settings = {
+		dots: false,
+		arrows: true,
+		infinite: true,
+		speed: 800,
+		slidesToShow: 4,
+		slidesToScroll: 2,
+		autoplay: true,
+		autoplaySpeed: 2000,
+	};
 	return (
 		<Fragment>
 			<Header />
@@ -19,6 +31,33 @@ export default function Home() {
 							tempor incididunt labore mod tempor incididunt ut labore
 							adipiscing.
 						</p>
+					</div>
+				</div>
+			</section>
+			<section className={classes.home_products_wrap}>
+				<div className="container">
+					<div className="title_wrap text-center">
+						<span>Books on trend</span>
+						<h2>New arrivals</h2>
+					</div>
+					<Slider {...settings}>
+						{fetchedData.books
+							.map((el) => {
+								return (
+									<div className={classes.home_products} key={el.isbn13}>
+										<div className={classes.inner}>
+											<img src={el.image} alt={el.title} />
+											<h3>{el.title}</h3>
+										</div>
+									</div>
+								);
+							})
+							.slice(0, 5)}
+					</Slider>
+					<div className="text-center">
+						<Link href="/products" className="primary__btn">
+							View All
+						</Link>
 					</div>
 				</div>
 			</section>
@@ -47,10 +86,25 @@ export default function Home() {
 						</Link>
 					</div>
 				</div>
-			</section>			
+			</section>
+			<Footer socialLinksData={fetchedSocialLinks}/>
 		</Fragment>
 	);
 }
 
+export async function getStaticProps() {
+	const response = await fetch("https://api.itbook.store/1.0/new");
+	const data = await response.json();
+	const socialLinksRes = await fetch(
+		"https://mohitdevelops-d64e5-default-rtdb.asia-southeast1.firebasedatabase.app/accounts.json"
+	);
+	const socialLinksData = await socialLinksRes.json();
+	return {
+		props: {
+			fetchedData: data,
+			fetchedSocialLinks: socialLinksData,
+		},
+	};
+}
 
 // https://api.itbook.store/1.0/new

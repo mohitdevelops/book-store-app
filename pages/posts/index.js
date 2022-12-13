@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Fragment, useState } from "react";
+import Footer from "../../components/ui/Footer";
 import Header from "../../components/ui/Header";
 import classes from "./posts.module.css";
 
@@ -7,10 +8,10 @@ export default function BlogList({ blogsList }) {
 	const [loadedList, setLoadedList] = useState(8);
 
 	const loadMoreHandler = () => {
-		setLoadedList(loadedList + 4);
+		setLoadedList(loadedList + 8);
 	};
 
-	const loadedBlogList = blogsList.slice(0, loadedList);
+	const loadedBlogList = blogsList.posts.slice(0, loadedList);
 
 	return (
 		<Fragment>
@@ -39,12 +40,13 @@ export default function BlogList({ blogsList }) {
 					</div>
 				</div>
 			</section>
+			<Footer />
 		</Fragment>
 	);
 }
 
 export async function getStaticProps() {
-	const res = await fetch("https://jsonplaceholder.typicode.com/posts");
+	const res = await fetch("https://dummyjson.com/posts");
 	const data = await res.json();
 	return {
 		props: {

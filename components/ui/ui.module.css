@@ -36,3 +36,24 @@ ul.nav a:hover{
     background-color: var(--primary-dark-red);
     padding: 6px 10px;
 }
+footer.footer{
+    background-color: var(--primary-dark-red);
+    color: #fff;
+}
+footer.footer .inner{
+    display: flex;
+    padding: 80px 0;
+}
+footer.footer .inner .right, footer.footer .inner .left{
+    flex: 1;
+}
+footer.footer .inner img.logo{
+    height: 50px;
+    width: auto;
+}
+footer.footer .inner ul.socialLinks{
+    display: flex;
+}
+footer.footer .inner .right{
+    text-align: right;
+}

@@ -17,35 +17,44 @@ export default function ProductDetails({ productDetail }) {
 						<span>{productDetail.subtitle}</span>
 						<h3>{productDetail.title}</h3>
 						<div className={classes.bottom_wrap}>
-							<div className={classes.desc}>
-								<p>{productDetail.desc}</p>
-								<table className={classes.table_box} width="100%">
-									<tbody>
-										<tr>
-											<td><span>Publisher</span></td>
-											<td>{productDetail.publisher}</td>
-										</tr>
-										<tr>
-											<td><span>Published</span></td>
-											<td>{productDetail.year}</td>
-										</tr>
-										<tr>
-											<td><span>Pages</span></td>
-											<td>{productDetail.pages}</td>
-										</tr>
-										<tr>
-											<td><span>Language</span></td>
-											<td>{productDetail.language}</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-							<div className={classes.author}>
-								<FaUserCircle className={classes.icon} />
-								<h3>
-									Authors:- <span>{productDetail.authors}</span>
-								</h3>
-							</div>
+							<p>{productDetail.desc}</p>
+							<table className={classes.table_box} width="100%">
+								<tbody>
+									<tr>
+										<td>
+											<span>Publisher</span>
+										</td>
+										<td>{productDetail.publisher}</td>
+									</tr>
+									<tr>
+										<td>
+											<span>Published</span>
+										</td>
+										<td>{productDetail.year}</td>
+									</tr>
+									<tr>
+										<td>
+											<span>Pages</span>
+										</td>
+										<td>{productDetail.pages}</td>
+									</tr>
+									<tr>
+										<td>
+											<span>Language</span>
+										</td>
+										<td>{productDetail.language}</td>
+									</tr>
+									<tr>
+										<td>
+											<span>Authors</span>
+										</td>
+										<td>{productDetail.authors}</td>
+									</tr>
+								</tbody>
+							</table>
+							<p className={classes.price}>{productDetail.price}</p>
+							<button className={classes.cart_btn}>Add to cart</button>
+							{/* <a href={productDetail.url}>check</a> */}
 						</div>
 					</div>
 				</div>

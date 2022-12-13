@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import Header from "../components/ui/Header";
+import Header from "../../components/ui/Header";
 
 export default function BlogDetail({ postData }) {
 	return (
@@ -16,10 +16,10 @@ export default function BlogDetail({ postData }) {
 }
 
 export async function getStaticPaths() {
-	const res = await fetch("https://jsonplaceholder.typicode.com/posts");
+	const res = await fetch("https://dummyjson.com/posts");
 	const data = await res.json();
 	
-	const paths = data.map((el) => {
+	const paths = data.posts.map((el) => {
 		return {
 			params: {
 				postId: `${el.id}`,
@@ -34,7 +34,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
 	const res = await fetch(
-		`https://jsonplaceholder.typicode.com/posts/${params.postId}`
+		`https://dummyjson.com/posts/${params.postId}`
 	);
 	const data = await res.json();
 	return {
