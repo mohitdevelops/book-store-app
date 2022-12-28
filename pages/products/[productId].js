@@ -1,10 +1,9 @@
-import { FaUserCircle } from "react-icons/fa";
 import { Fragment } from "react";
 import Header from "../../components/ui/Header";
 import classes from "./product.module.css";
 
 export default function ProductDetails({ productDetail }) {
-	console.log(productDetail);
+
 	return (
 		<Fragment>
 			<Header />
@@ -53,8 +52,9 @@ export default function ProductDetails({ productDetail }) {
 								</tbody>
 							</table>
 							<p className={classes.price}>{productDetail.price}</p>
-							<button className={classes.cart_btn}>Add to cart</button>
-							{/* <a href={productDetail.url}>check</a> */}
+							<button className={classes.cart_btn}>
+								Add to cart
+							</button>
 						</div>
 					</div>
 				</div>

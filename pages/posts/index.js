@@ -6,12 +6,17 @@ import classes from "./posts.module.css";
 
 export default function BlogList({ blogsList }) {
 	const [loadedList, setLoadedList] = useState(8);
+	const [showBtn, setShowBtn] = useState(true);
+	
+	const loadedBlogList = blogsList.posts.slice(0, loadedList);
 
 	const loadMoreHandler = () => {
 		setLoadedList(loadedList + 8);
+		if(loadedBlogList.length >= blogsList.posts.length){
+			setShowBtn(false);
+			return
+		}
 	};
-
-	const loadedBlogList = blogsList.posts.slice(0, loadedList);
 
 	return (
 		<Fragment>
@@ -35,8 +40,8 @@ export default function BlogList({ blogsList }) {
 							);
 						})}
 					</div>
-					<div className={classes.loadMore}>
-						<button onClick={loadMoreHandler}>Load more</button>
+					<div className={classes.loadMore}>						
+						{showBtn ? <button onClick={loadMoreHandler}>Load more</button> : null}
 					</div>
 				</div>
 			</section>
@@ -46,7 +51,7 @@ export default function BlogList({ blogsList }) {
 }
 
 export async function getStaticProps() {
-	const res = await fetch("https://dummyjson.com/posts");
+	const res = await fetch(process.env.BLOG_POST_API);
 	const data = await res.json();
 	return {
 		props: {

@@ -36,16 +36,26 @@ ul.nav a:hover{
     background-color: var(--primary-dark-red);
     padding: 6px 10px;
 }
+.footer__wave{
+    line-height: 0;
+    margin-top: -150px;
+    position: relative;
+    z-index: -5;
+}
+.footer__wave svg{
+    fill: var(--primary-dark-red);    
+}
 footer.footer{
     background-color: var(--primary-dark-red);
     color: #fff;
 }
 footer.footer .inner{
-    display: flex;
-    padding: 80px 0;
+    padding: 0 0 80px;
+    text-align: center;
 }
-footer.footer .inner .right, footer.footer .inner .left{
-    flex: 1;
+footer.footer .inner h3{    
+    font-weight: 400;
+    letter-spacing: 2px;
 }
 footer.footer .inner img.logo{
     height: 50px;
@@ -53,7 +63,8 @@ footer.footer .inner img.logo{
 }
 footer.footer .inner ul.socialLinks{
     display: flex;
-}
-footer.footer .inner .right{
-    text-align: right;
+    justify-content: center;
+    gap: 25px;
+    font-size: 1.8rem;
+    margin-top: 20px;
 }

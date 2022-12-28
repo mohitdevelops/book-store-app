@@ -16,7 +16,7 @@ export default function Products(props) {
 }
 
 export async function getStaticProps() {
-	const response = await fetch("https://api.itbook.store/1.0/new");
+	const response = await fetch(process.env.API_URL);
 	const data = await response.json();
 	return {
 		props: {

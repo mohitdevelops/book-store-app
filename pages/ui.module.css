@@ -11,6 +11,8 @@
     background-repeat: no-repeat;
     position: relative;
     z-index: 1;
+    line-height: 0;
+    overflow: hidden;
 }
 .banner__wrap::before{
     content: "";
@@ -21,6 +23,15 @@
     bottom: 0;
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0,0,0,0));
     z-index: -1;
+}
+.banner__wrap .banner__wave{
+    position: absolute;
+    bottom: -50px;
+    left: 0;
+    right: 0;    
+}
+.banner__wrap .banner__wave svg{
+    fill: #fff;
 }
 .banner__wrap img{
     width: 100%;
@@ -39,7 +50,7 @@
     font-size: 3.5rem;
     text-transform: capitalize;
     font-weight: 800;
-    margin: 8px 0 10px;
+    margin: 15px 0 10px;
     line-height: 1.2;
 }
 .banner__wrap .banner__text span{
@@ -88,11 +99,83 @@
 }
 /* Products End  */
 
+/* Cart Page */
+.empty_cart_box{
+    width: 100%;
+    background-color: #eee;
+    padding: 30px;
+    text-align: center;
+    border-radius: 10px;
+}
+.empty_cart_box .cartImage{
+    height: 150px;
+    width: auto;
+    margin: 0 auto 80px;
+}
+.empty_cart_box h4{
+    font-size: 1.6rem;
+    color: #000;
+}
 
+
+table.cartTable{
+    width: 100%;
+    border-spacing: 0;
+    margin-top: 40px;
+    display: table;
+    border-collapse: separate;
+}
+table.cartTable td,table.cartTable th{
+    text-align: left;
+    padding: 10px 15px;
+}
+table.cartTable thead th{
+    border-bottom: solid 1px #e1e1e1;    
+    color: #000;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+table.cartTable td.left{
+    text-align: left;
+}
+table.cartTable tbody td{
+    border-bottom: solid 1px #e1e1e1;
+}
+
+.checkout_wrap{
+    width: 100%;
+    margin-top: 40px;
+    display: flex;
+    justify-content: flex-end;
+}
+.checkout_wrap table{
+    background-color: var(--primary-dark-red);
+    color: #fff;
+    padding: 30px 40px;
+    max-width: 380px;
+    width: 100%;
+    border-collapse: 0;
+    display: table;
+}
+.checkout_wrap table tr:last-child td{
+    border: none;
+    padding-bottom: 0;
+}
+.checkout_wrap table td{
+    border-bottom: solid 1px #d83737;
+    padding: 10px 0;    
+}
+.checkout_wrap table td:last-child{
+    text-align: right;
+}
+.checkout_wrap table td strong{
+    font-size: 1.2rem;
+}
+/* Cart Page End  */
 
 @media screen and (min-width: 991px) {
     .banner__wrap .banner__text{
-        width: 45%;
+        width: 55%;
         text-align: left;
     }
     

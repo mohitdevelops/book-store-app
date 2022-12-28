@@ -3,6 +3,7 @@ import Link from "next/link";
 import classes from "./ui.module.css";
 import Image from "next/image";
 import Logo from "../../public/logo.png";
+import { useSelector } from "react-redux";
 
 const navbar = [
 	{ id: "nav1", url: "/", text: "Home" },
@@ -12,6 +13,7 @@ const navbar = [
 ];
 
 export default function Header() {
+	const addedCartItems = useSelector(state => state.cartItems.totalQuantity)
 	return (
 		<header className={classes.header}>
 			<div className={`container ${classes.header__container}`}>
@@ -27,7 +29,7 @@ export default function Header() {
 						))}
 					</ul>
 					<Link href="/cart" className={classes.cart__items}>
-						Cart <span>0</span>
+						Cart <span>{addedCartItems}</span>
 					</Link>
 				</div>
 			</div>

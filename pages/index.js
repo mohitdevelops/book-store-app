@@ -2,19 +2,19 @@ import { Fragment } from "react";
 import Header from "../components/ui/Header";
 import Image from "next/image";
 import about_thumb from "../public/about_thumb.png";
-import classes from "./home.module.css";
+import classes from "./ui.module.css";
 import Link from "next/link";
 import Slider from "react-slick";
 import Footer from "../components/ui/Footer";
 
-export default function Home({ fetchedData, fetchedSocialLinks }) {
+export default function Home({ fetchedData }) {
 	const settings = {
 		dots: false,
 		arrows: true,
 		infinite: true,
 		speed: 800,
 		slidesToShow: 4,
-		slidesToScroll: 2,
+		slidesToScroll: 1,
 		autoplay: true,
 		autoplaySpeed: 2000,
 	};
@@ -25,40 +25,20 @@ export default function Home({ fetchedData, fetchedSocialLinks }) {
 				<div className="container">
 					<div className={classes.banner__text}>
 						<span>50% discount on early purchase</span>
-						<h1>Your World of Words</h1>
+						<h1>Books at the best price</h1>
 						<p>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit, eius mod
-							tempor incididunt labore mod tempor incididunt ut labore
-							adipiscing.
+							Trusted independent sellers offer for sale curated rare books,
+							first editions and collectible signed copies of your favorite
+							book.
 						</p>
 					</div>
 				</div>
-			</section>
-			<section className={classes.home_products_wrap}>
-				<div className="container">
-					<div className="title_wrap text-center">
-						<span>Books on trend</span>
-						<h2>New arrivals</h2>
-					</div>
-					<Slider {...settings}>
-						{fetchedData.books
-							.map((el) => {
-								return (
-									<div className={classes.home_products} key={el.isbn13}>
-										<div className={classes.inner}>
-											<img src={el.image} alt={el.title} />
-											<h3>{el.title}</h3>
-										</div>
-									</div>
-								);
-							})
-							.slice(0, 5)}
-					</Slider>
-					<div className="text-center">
-						<Link href="/products" className="primary__btn">
-							View All
-						</Link>
-					</div>
+				<div className={classes.banner__wave}>
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+						<path
+							d="M0,224L60,234.7C120,245,240,267,360,250.7C480,235,600,181,720,176C840,171,960,213,1080,224C1200,235,1320,213,1380,202.7L1440,192L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"
+						></path>
+					</svg>
 				</div>
 			</section>
 			<section className={classes.intro__wrap}>
@@ -87,24 +67,44 @@ export default function Home({ fetchedData, fetchedSocialLinks }) {
 					</div>
 				</div>
 			</section>
-			<Footer socialLinksData={fetchedSocialLinks}/>
+			<section className={classes.home_products_wrap}>
+				<div className="container">
+					<div className="title_wrap text-center">
+						<span>Books on trend</span>
+						<h2>New arrivals</h2>
+					</div>
+					<Slider {...settings}>
+						{fetchedData.books
+							.map((el) => {
+								return (
+									<div className={classes.home_products} key={el.isbn13}>
+										<div className={classes.inner}>
+											<img src={el.image} alt={el.title} />
+											<h3>{el.title}</h3>
+										</div>
+									</div>
+								);
+							})
+							.slice(0, 5)}
+					</Slider>
+					<div className="text-center">
+						<Link href="/products" className="primary__btn">
+							View Products
+						</Link>
+					</div>
+				</div>
+			</section>
+			<Footer />
 		</Fragment>
 	);
 }
 
 export async function getStaticProps() {
-	const response = await fetch("https://api.itbook.store/1.0/new");
+	const response = await fetch(process.env.API_URL);
 	const data = await response.json();
-	const socialLinksRes = await fetch(
-		"https://mohitdevelops-d64e5-default-rtdb.asia-southeast1.firebasedatabase.app/accounts.json"
-	);
-	const socialLinksData = await socialLinksRes.json();
 	return {
 		props: {
-			fetchedData: data,
-			fetchedSocialLinks: socialLinksData,
+			fetchedData: data,			
 		},
 	};
 }
-
-// https://api.itbook.store/1.0/new

@@ -78,7 +78,6 @@ section{
 .slick-prev:before, .slick-next:before{
   color: var(--primary-dark-red) !important;
 }
-
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;

@@ -43,3 +43,17 @@
 .loadMore button:hover{
     background-color: var(--primary-dark-red);
 }
+.blog__wrap{
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+}
+.blog__wrap h4{
+    font-size: 2rem;
+    color: #000;
+    margin: 0 0 20px;
+}
+.blog__wrap .image{
+    width: 100%;
+    height: auto;
+}
