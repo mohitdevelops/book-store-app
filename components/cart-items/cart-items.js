@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { useDispatch } from "react-redux";
 import { cartStoreAction } from "../../store/cart-items";
 import classes from "./cart.module.css";
@@ -25,7 +26,7 @@ export default function CartItems(props) {
 	return (
 		<tr>
 			<td>
-				<img src={image} alt={title} className={classes.itemImage} />
+				<Image src={image} alt={title} width={100} height={100} className={classes.itemImage} />
 			</td>
 			<td className={classes.left}>{title}</td>
 			<td>${price.toFixed(2)}</td>

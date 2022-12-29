@@ -1,16 +1,25 @@
+import Image from "next/image";
 import { Fragment } from "react";
 import Header from "../../components/ui/Header";
 import classes from "./product.module.css";
 
 export default function ProductDetails({ productDetail }) {
-
 	return (
 		<Fragment>
 			<Header />
 			<div className="container">
 				<div className={classes.product_detail_wrap}>
 					<div className={classes.image_wrap}>
-						<img src={productDetail.image} alt={productDetail.title} />
+						<Image
+							src={productDetail.image}
+							alt={productDetail.title}
+							width={1000}
+							height={1000}
+							style={{
+								width: '100%',
+								height: 'auto',
+							}}
+						/>
 					</div>
 					<div className={classes.detail_wrap}>
 						<span>{productDetail.subtitle}</span>
@@ -52,9 +61,7 @@ export default function ProductDetails({ productDetail }) {
 								</tbody>
 							</table>
 							<p className={classes.price}>{productDetail.price}</p>
-							<button className={classes.cart_btn}>
-								Add to cart
-							</button>
+							<button className={classes.cart_btn}>Add to cart</button>
 						</div>
 					</div>
 				</div>

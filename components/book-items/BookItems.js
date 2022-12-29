@@ -31,7 +31,7 @@ export default function BookItems(props) {
 				<div className={classes.bottom}>
 					<p>${price}</p>
 					<button onClick={addToCartHandler}>
-						{isAdded ? "In your cart" : "Add to cart"}
+						{!isAdded ? "In your cart" : "Add to cart"}
 					</button>
 				</div>
 			</div>
