@@ -1,9 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+// Getting items from localStorage 
+const cart__items =
+	localStorage.getItem("items") !== null
+		? JSON.parse(localStorage.getItem("items"))
+		: [];
+
 const cartItemSlice = createSlice({
 	name: "cart",
 	initialState: {
-		items: [],
+		items: cart__items,
 		totalQuantity: 0,
 		totalAmount: 0,
 	},
@@ -31,6 +37,12 @@ const cartItemSlice = createSlice({
 				(acc, index) => acc + Number(index.price) * Number(index.quantity),
 				0
 			);
+
+			// Setting items to localStorage
+			localStorage.setItem(
+				"items",
+				JSON.stringify(state.items.map((el) => el))
+			);
 		},
 		removeProduct(state, action) {
 			const removingItemId = action.payload;
@@ -46,7 +58,7 @@ const cartItemSlice = createSlice({
 					alreadyAddedItem.totalPrice - alreadyAddedItem.price;
 			}
 			state.totalAmount = state.items.reduce(
-				(acc, index) => acc - Number(index.price) * Number(index.quantity),
+				(acc, index) => acc + Number(index.price) * Number(index.quantity),
 				0
 			);
 		},
