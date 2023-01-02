@@ -25,13 +25,11 @@ const cartItemSlice = createSlice({
 					title: newCartItems.title,
 					price: newCartItems.price,
 					image: newCartItems.imageUrl,
-					totalPrice: newCartItems.price,
-					isAdded: true,
+					totalPrice: newCartItems.price,					
 				});
 			} else {
 				existingItem.quantity++;
-				existingItem.totalPrice = existingItem.totalPrice + newCartItems.price;
-				existingItem.isAdded = true;
+				existingItem.totalPrice = existingItem.totalPrice + newCartItems.price;				
 			}
 			state.totalAmount = state.items.reduce(
 				(acc, index) => acc + Number(index.price) * Number(index.quantity),

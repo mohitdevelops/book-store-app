@@ -3,6 +3,7 @@
     padding: 50px 0;
     display: flex;
     gap: 30px;
+    flex-direction: column;
 }
 .product_detail_wrap .image_wrap{
     max-width: 350px;
@@ -85,4 +86,16 @@ button.cart_btn{
 }
 button.cart_btn:hover{
     background-color: var(--primary-dark-red);
+}
+
+@media screen and (min-width:767px) {
+    .product_detail_wrap{
+        flex-direction: row;
+    }
+}
+
+@media screen and (min-width:991px) {
+    .product_detail_wrap{
+        flex-direction: row;
+    }
 }

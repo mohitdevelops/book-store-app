@@ -5,7 +5,7 @@ import classes from "./book-item.module.css";
 import { cartStoreAction } from "../../store/cart-items";
 
 export default function BookItems(props) {
-	const { id, title, price, imageUrl, isAdded } = props;
+	const { id, title, price, imageUrl } = props;
 	const dispatch = useDispatch();
 
 	const addToCartHandler = () => {
@@ -15,10 +15,8 @@ export default function BookItems(props) {
 				title,
 				price,
 				imageUrl,
-				isAdded,
 			})
 		);
-		console.log(isAdded);
 	};
 
 	return (
@@ -27,11 +25,13 @@ export default function BookItems(props) {
 				<Image src={imageUrl} alt={title} className={classes.image} fill />
 			</Link>
 			<div className={classes.desc_box}>
-				<h3>{title}</h3>
+				<Link href={`/products/${id}`}>
+					<h3>{title}</h3>
+				</Link>
 				<div className={classes.bottom}>
 					<p>${price}</p>
 					<button onClick={addToCartHandler}>
-						{!isAdded ? "In your cart" : "Add to cart"}
+						Add to cart
 					</button>
 				</div>
 			</div>

@@ -2,6 +2,7 @@ import Image from "next/image";
 import blogcover from "../../public/blog-cover.jpg";
 import { Fragment } from "react";
 import Header from "../../components/ui/Header";
+import Footer from "../../components/ui/Footer";
 import classes from "./posts.module.css";
 import Head from "next/head";
 
@@ -25,6 +26,7 @@ export default function BlogDetail({ postData }) {
 					</div>
 				</div>
 			</section>
+			<Footer />
 		</Fragment>
 	);
 }

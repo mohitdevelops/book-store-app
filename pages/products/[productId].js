@@ -2,6 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import { Fragment } from "react";
 import Header from "../../components/ui/Header";
+import Footer from "../../components/ui/Footer";
 import classes from "./product.module.css";
 
 export default function ProductDetails({ productDetail }) {
@@ -70,6 +71,7 @@ export default function ProductDetails({ productDetail }) {
 					</div>
 				</div>
 			</div>
+			<Footer />
 		</Fragment>
 	);
 }
