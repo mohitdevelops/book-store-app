@@ -6,39 +6,30 @@ import {
 	FaTwitter,
 } from "react-icons/fa";
 import classes from "./ui.module.css";
-import { Fragment, useEffect, useState } from "react";
+import { Fragment } from "react";
 import Link from "next/link";
 
+const socialLinks = [
+	{ id: "github", url: "https://github.com/mohitdevelops", icon: <FaGithub /> },
+	{
+		id: "twitter",
+		url: "https://twitter.com/mohitdevelops",
+		icon: <FaTwitter />,
+	},
+	{
+		id: "behance",
+		url: "https://www.behance.net/mohitcreates",
+		icon: <FaBehance />,
+	},
+	{ id: "dev", url: "https://dev.to/mohitdevelops", icon: <FaDev /> },
+	{
+		id: "instagram",
+		url: "https://www.instagram.com/sketch_stuffs/",
+		icon: <FaInstagram />,
+	},
+];
+
 export default function Footer() {
-	const [socialLinks, setSocialLinks] = useState([]);
-
-	useEffect(() => {
-		const fetchLinks = async () => {
-			const res = await fetch(
-				"https://mohitdevelops-d64e5-default-rtdb.asia-southeast1.firebasedatabase.app/accounts.json"
-			);
-			const data = await res.json();
-			let loadedLinksData = [];
-			for (const keys in data) {
-				loadedLinksData.push({
-					url: data[keys].url,
-					icon: data[keys].icon,
-					id: data[keys].id,
-				});
-			}
-			setSocialLinks(loadedLinksData);
-		};
-		fetchLinks().catch((err) => console.error(err.message));
-	}, []);
-
-	const list = {
-		"<FaBehance />": <FaBehance />,
-		"<FaDev />": <FaDev />,
-		"<FaGithub />": <FaGithub />,
-		"<FaInstagram />": <FaInstagram />,
-		"<FaTwitter />": <FaTwitter />,
-	};
-
 	return (
 		<Fragment>
 			<div className={classes.footer__wave}>
@@ -52,13 +43,18 @@ export default function Footer() {
 			<footer className={classes.footer}>
 				<div className="container">
 					<div className={classes.inner}>
-						<h3>Connect with me:</h3>
+						<h3>
+							Designed and Developed by{" "}
+							<Link href={socialLinks[0].url} target="_blank">
+								@mohitdevelops
+							</Link>
+						</h3>
 						<ul className={classes.socialLinks}>
 							{socialLinks?.map((el) => {
 								return (
 									<li key={el.id}>
 										<Link target="_blank" href={el.url}>
-											{list[el.icon.toString()]}
+											{el.icon}
 										</Link>
 									</li>
 								);
