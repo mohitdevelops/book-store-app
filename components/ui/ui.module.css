@@ -1,8 +1,9 @@
 .header{
     width: 100%;
     background-color: #fff;
-    padding: 15px 0; 
+    padding: 8px 0; 
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.07);   
+    position: relative;    
 }
 .header__container{
     display: flex;
@@ -17,36 +18,21 @@
     text-transform: uppercase;
     font-weight: 500;    
 }
-ul.nav{
-    display: flex;
-    gap: 30px;    
-}
-ul.nav a {
-    transition: 0.3s ease;
-    color: var(--primary-red);
-}
-ul.nav a:hover{
-    color: var(--primary-dark-red);
-}
+
 .cart__items{
     background-color: var(--primary-dark-red);
     padding: 6px 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
-.footer__wave{
-    line-height: 0;
-    margin-top: -150px;
-    position: relative;
-    z-index: -5;
-}
-.footer__wave svg{
-    fill: var(--primary-dark-red);    
-}
+
 footer.footer{
     background-color: var(--primary-dark-red);
     color: #fff;
 }
 footer.footer .inner{
-    padding: 0 0 80px;
+    padding: 80px 0;
     text-align: center;
 }
 footer.footer .inner h3{    
@@ -63,4 +49,72 @@ footer.footer .inner ul.socialLinks{
     gap: 25px;
     font-size: 1.8rem;
     margin-top: 20px;
+}
+.footer__wave{
+    margin-top: 0;
+    line-height: 0;
+}
+.footer__wave svg{
+    fill: var(--primary-dark-red);    
+}
+
+.right__box svg.menubar{
+    display: block;
+    color: var(--primary-dark-red);
+    font-size: 1.5rem;
+}
+ul.nav{
+    display: flex;
+    flex-direction: column;  
+    position: absolute;
+    top: 100%; 
+    left: 100%;
+    right: 0;
+    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.192);
+    transition: 0.3s ease;
+    background-color: #fff;
+    z-index: 5;
+}
+ul.nav li a {
+    color: #000;
+    padding: 10px 15px;
+    width: 100%;
+}
+ul.nav li{
+    border-top: solid 1px #eee;
+}
+@media screen and (min-width: 767px) {
+    .header{
+        padding: 15px 0;
+    }
+    .footer__wave{       
+        margin-top: -150px;
+        position: relative;
+        z-index: -5;
+    }
+    .right__box svg.menubar{
+        display: none;
+    }
+    ul.nav{
+        flex-direction: row;
+        gap: 30px;  
+        position: relative;  
+        top: inherit;
+        left: inherit;
+        box-shadow: none;
+    }
+    ul.nav li{
+        border: none;
+    }
+    ul.nav a {
+        transition: 0.3s ease;
+        color: var(--primary-red);   
+        width: auto; 
+    }
+    ul.nav a:hover{
+        color: var(--primary-dark-red);
+    }
+    footer.footer .inner{
+        padding: 0 0 80px;
+    }
 }

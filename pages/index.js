@@ -6,6 +6,7 @@ import classes from "./ui.module.css";
 import Link from "next/link";
 import Slider from "react-slick";
 import Footer from "../components/ui/Footer";
+import Head from "next/head";
 
 export default function Home({ fetchedData }) {
 	const settings = {
@@ -17,9 +18,21 @@ export default function Home({ fetchedData }) {
 		slidesToScroll: 1,
 		autoplay: true,
 		autoplaySpeed: 2000,
+		responsive: [
+			{
+				breakpoint: 767,
+				settings: {
+					slidesToShow: 1,
+					dots: true
+				}
+			}
+		]
 	};
 	return (
 		<Fragment>
+			<Head>
+				<title>Book Store</title>
+			</Head>
 			<Header />
 			<section className={classes.banner__wrap}>
 				<div className="container">
@@ -52,10 +65,10 @@ export default function Home({ fetchedData }) {
 							</div>
 							<p>
 								Lorem Ipsum is simply dummy text of the printing and typesetting
-								industry. Lorem Ipsum has been the industry&apos;s standard dummy
-								text ever since the 1500s, when an unknown printer took a galley
-								of type and scrambled it to make a type specimen book. It has
-								survived not only five centuries, but also the leap into
+								industry. Lorem Ipsum has been the industry&apos;s standard
+								dummy text ever since the 1500s, when an unknown printer took a
+								galley of type and scrambled it to make a type specimen book. It
+								has survived not only five centuries, but also the leap into
 								electronic typesetting, remaining essentially unchanged. It was
 								popularised in the 1960s with the release of Letraset sheets
 								containing Lorem Ipsum passages
@@ -73,7 +86,7 @@ export default function Home({ fetchedData }) {
 						<span>Books on trend</span>
 						<h2>New arrivals</h2>
 					</div>
-					<Slider {...settings}>
+					<Slider className={classes.slider} {...settings}>
 						{fetchedData.books
 							.map((el) => {
 								return (

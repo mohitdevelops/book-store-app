@@ -20,6 +20,7 @@ body {
     font-size: 15px;
     line-height: 1.8;
     color: var(--light);
+    overflow-x: hidden;
 }
 
 a {
@@ -77,6 +78,9 @@ section{
 }
 .slick-prev:before, .slick-next:before{
   color: var(--primary-dark-red) !important;
+}
+.show{
+  left: 0 !important;
 }
 @media (prefers-color-scheme: dark) {
   html {

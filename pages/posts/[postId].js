@@ -3,10 +3,14 @@ import blogcover from "../../public/blog-cover.jpg";
 import { Fragment } from "react";
 import Header from "../../components/ui/Header";
 import classes from "./posts.module.css";
+import Head from "next/head";
 
 export default function BlogDetail({ postData }) {
 	return (
 		<Fragment>
+			<Head>
+				<title>{postData.title}</title>
+			</Head>
 			<Header />
 			<section>
 				<div className="container">

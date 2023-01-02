@@ -1,7 +1,7 @@
 .blog__list{
     display: grid;
     gap: 30px;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(1, 1fr);
     list-style: none;
     margin-top: 70px;
 }
@@ -56,4 +56,15 @@
 .blog__wrap .image{
     width: 100%;
     height: auto;
+}
+
+@media screen and (min-width:767px) {
+    .blog__list{
+         grid-template-columns: repeat(3, 1fr);
+    }
+}
+@media screen and (min-width:991px) {
+    .blog__list{
+         grid-template-columns: repeat(4, 1fr);
+    }
 }

@@ -1,3 +1,4 @@
+import Head from "next/head";
 import Link from "next/link";
 import { Fragment, useState } from "react";
 import Footer from "../../components/ui/Footer";
@@ -7,19 +8,22 @@ import classes from "./posts.module.css";
 export default function BlogList({ blogsList }) {
 	const [loadedList, setLoadedList] = useState(8);
 	const [showBtn, setShowBtn] = useState(true);
-	
+
 	const loadedBlogList = blogsList.posts.slice(0, loadedList);
 
 	const loadMoreHandler = () => {
 		setLoadedList(loadedList + 8);
-		if(loadedBlogList.length >= blogsList.posts.length){
+		if (loadedBlogList.length >= blogsList.posts.length) {
 			setShowBtn(false);
-			return
+			return;
 		}
 	};
 
 	return (
 		<Fragment>
+			<Head>
+				<title>Blogs - Book Store</title>
+			</Head>
 			<Header />
 			<section>
 				<div className="container">
@@ -40,8 +44,10 @@ export default function BlogList({ blogsList }) {
 							);
 						})}
 					</div>
-					<div className={classes.loadMore}>						
-						{showBtn ? <button onClick={loadMoreHandler}>Load more</button> : null}
+					<div className={classes.loadMore}>
+						{showBtn ? (
+							<button onClick={loadMoreHandler}>Load more</button>
+						) : null}
 					</div>
 				</div>
 			</section>

@@ -1,3 +1,4 @@
+import Head from "next/head";
 import Image from "next/image";
 import { Fragment } from "react";
 import Header from "../../components/ui/Header";
@@ -6,6 +7,9 @@ import classes from "./product.module.css";
 export default function ProductDetails({ productDetail }) {
 	return (
 		<Fragment>
+			<Head>
+				<title>{productDetail.title}</title>
+			</Head>
 			<Header />
 			<div className="container">
 				<div className={classes.product_detail_wrap}>
