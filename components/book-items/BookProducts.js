@@ -1,7 +1,16 @@
 import BookItems from "./BookItems";
 import classes from "./book-item.module.css";
+import { useEffect } from "react";
 
 export default function BookProducts({ booksData }) {
+	useEffect(() => {
+		booksData.forEach((element) => {
+			element.isAdded = false;
+		});
+	}, []);
+
+	console.log(booksData);
+
 	return (
 		<div className="container">
 			<div className="title_wrap text-center">
@@ -9,7 +18,7 @@ export default function BookProducts({ booksData }) {
 				<h2>Collection</h2>
 			</div>
 			<div className={classes.products}>
-				{booksData.books.map((el) => {
+				{booksData.map((el) => {
 					return (
 						<BookItems
 							id={el.isbn13}
@@ -19,7 +28,7 @@ export default function BookProducts({ booksData }) {
 							title={el.title}
 							subtitle={el.subtitle}
 							link={el.link}
-							isAdded
+							isAdded={el.isAdded}
 						/>
 					);
 				})}

@@ -12,7 +12,7 @@ export default function Products(props) {
 			</Head>
 			<Header />
 			<section>
-				<BookProducts booksData={props.fetchedData} />
+				<BookProducts booksData={props.fetchedData.books} />
 			</section>
 			<Footer />
 		</Fragment>

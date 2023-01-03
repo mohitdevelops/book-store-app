@@ -13,7 +13,7 @@ export default function Cart() {
 	const itemList = useSelector((state) => state.cartItems.items);
 	const cartTotalAmount = useSelector((state) => state.cartItems.totalAmount);
 	const grandTotal = cartTotalAmount + 40;
-
+		
 	const cartPageSection = (
 		<Fragment>
 			<div className="title_wrap text-center">
