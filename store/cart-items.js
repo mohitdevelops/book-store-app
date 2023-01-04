@@ -15,24 +15,18 @@ const cartItemSlice = createSlice({
 	},
 	reducers: {
 		addProduct(state, action) {
-			const newCartItems = action.payload; //items from dispatch object
-			const existingItem = state.items.find((el) => el.id === newCartItems.id);					
+			const { payload } = action; //items from dispatch object
+			const existingItem = state.items.find((el) => el.id === payload.id);
 			state.totalQuantity++;
 			if (!existingItem) {
 				state.items.push({
-					id: newCartItems.id,
 					quantity: 1,
-					title: newCartItems.title,
-					price: newCartItems.price,
-					image: newCartItems.imageUrl,
-					totalPrice: newCartItems.price,		
-					isAdded: !newCartItems.isAdded,
+					totalPrice: payload.price,
+					...payload,
 				});
-				!newCartItems.isAdded;
 			} else {
 				existingItem.quantity++;
-				existingItem.totalPrice = existingItem.totalPrice + newCartItems.price;	
-				isAddedToCart();			
+				existingItem.totalPrice = existingItem.totalPrice + newCartItems.price;
 			}
 			state.totalAmount = state.items.reduce(
 				(acc, index) => acc + Number(index.price) * Number(index.quantity),
@@ -50,7 +44,7 @@ const cartItemSlice = createSlice({
 			const alreadyAddedItem = state.items.find(
 				(item) => item.id === removingItemId
 			);
-			// const findProdIndexToCart = state.items.findIndex(prod => prod.id === action.id);	
+			// const findProdIndexToCart = state.items.findIndex(prod => prod.id === action.id);
 			// state.items[findProdIndexToCart].isAdded = false;
 			state.totalQuantity--;
 			if (alreadyAddedItem.quantity === 1) {

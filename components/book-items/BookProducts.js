@@ -3,13 +3,13 @@ import classes from "./book-item.module.css";
 import { useEffect } from "react";
 
 export default function BookProducts({ booksData }) {
-	useEffect(() => {
-		booksData.forEach((element) => {
-			element.isAdded = false;
-		});
-	}, []);
+	// useEffect(() => {
+	// 	booksData.forEach((element) => {
+	// 		element.isAdded = false;
+	// 	});
+	// }, []);
 
-	console.log(booksData);
+	// console.log(booksData);
 
 	return (
 		<div className="container">
@@ -23,12 +23,12 @@ export default function BookProducts({ booksData }) {
 						<BookItems
 							id={el.isbn13}
 							key={el.isbn13}
-							imageUrl={el.image}
+							image={el.image}
 							price={Number(el.price.slice(1))}
 							title={el.title}
 							subtitle={el.subtitle}
 							link={el.link}
-							isAdded={el.isAdded}
+							// isAdded={el.isAdded}
 						/>
 					);
 				})}

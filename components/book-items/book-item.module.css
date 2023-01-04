@@ -41,12 +41,30 @@
     color: #000;
     font-size: 1.3rem;
 }
-.product__item button{
+.product__item button, .product__item a.addedBtn{
     background-color: var(--primary-red);
-    padding: 8px 20px;
+    padding: 10px 20px;
     cursor: pointer;
     border: none;
     line-height: 1;
+    border-radius: 3px;
+    transition: 0.3s ease;
+    display: inline-block;
+    font-size: 1rem;
+}
+.product__item button:hover{
+    background-color: var(--primary-dark-red);
+}
+.product__item a.addedBtn{
+    width: auto;
+    display: flex;
+    align-items: center;
+    background-color: #000;
+    color: #fff;
+    /* border: solid 1px #; */
+}
+.product__item a.addedBtn svg{
+    margin-right: 10px;
 }
 .product__item a{
     width: 100%;
