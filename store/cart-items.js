@@ -15,14 +15,17 @@ const cartItemSlice = createSlice({
 	},
 	reducers: {
 		addProduct(state, action) {
-			const { payload } = action; //items from dispatch object
-			const existingItem = state.items.find((el) => el.id === payload.id);
+			const newCartItems = action.payload; //items from dispatch object
+			const existingItem = state.items.find((el) => el.id === newCartItems.id);
 			state.totalQuantity++;
 			if (!existingItem) {
 				state.items.push({
-					quantity: 1,
-					totalPrice: payload.price,
-					...payload,
+					id: newCartItems.id,
+                    quantity: 1,
+                    title: newCartItems.title,
+                    price: newCartItems.price,
+                    image: newCartItems.image,
+                    totalPrice: newCartItems.price,
 				});
 			} else {
 				existingItem.quantity++;

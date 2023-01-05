@@ -4,69 +4,104 @@ import { Fragment } from "react";
 import Header from "../../components/ui/Header";
 import Footer from "../../components/ui/Footer";
 import classes from "./product.module.css";
+import { useDispatch } from "react-redux";
+import { cartStoreAction } from "../../store/cart-items";
 
 export default function ProductDetails({ productDetail }) {
+	console.log(productDetail);
+	const dispatch = useDispatch();
+	const {
+		title,
+		image,
+		subtitle,
+		desc,
+		publisher,
+		year,
+		pages,
+		price,
+		language,
+		authors,
+		isbn13,
+	} = productDetail;
+
+	const addToCartHandler = () => {
+		dispatch(
+			cartStoreAction.addProduct({
+				id: isbn13,
+				title,
+				price,
+				image,
+			})
+		);
+	};
+
 	return (
 		<Fragment>
 			<Head>
-				<title>{productDetail.title}</title>
+				<title>{title}</title>
 			</Head>
 			<Header />
 			<div className="container">
 				<div className={classes.product_detail_wrap}>
 					<div className={classes.image_wrap}>
 						<Image
-							src={productDetail.image}
-							alt={productDetail.title}
+							src={image}
+							alt={title}
 							width={1000}
 							height={1000}
 							style={{
-								width: '100%',
-								height: 'auto',
+								width: "100%",
+								height: "auto",
 							}}
 						/>
 					</div>
 					<div className={classes.detail_wrap}>
-						<span>{productDetail.subtitle}</span>
-						<h3>{productDetail.title}</h3>
+						<span>{subtitle}</span>
+						<h3>{title}</h3>
 						<div className={classes.bottom_wrap}>
-							<p>{productDetail.desc}</p>
+							<p>{desc}</p>
 							<table className={classes.table_box} width="100%">
 								<tbody>
 									<tr>
 										<td>
 											<span>Publisher</span>
 										</td>
-										<td>{productDetail.publisher}</td>
+										<td>{publisher}</td>
 									</tr>
 									<tr>
 										<td>
 											<span>Published</span>
 										</td>
-										<td>{productDetail.year}</td>
+										<td>{year}</td>
 									</tr>
 									<tr>
 										<td>
 											<span>Pages</span>
 										</td>
-										<td>{productDetail.pages}</td>
+										<td>{pages}</td>
 									</tr>
 									<tr>
 										<td>
 											<span>Language</span>
 										</td>
-										<td>{productDetail.language}</td>
+										<td>{language}</td>
 									</tr>
 									<tr>
 										<td>
 											<span>Authors</span>
 										</td>
-										<td>{productDetail.authors}</td>
+										<td>{authors}</td>
 									</tr>
 								</tbody>
 							</table>
-							<p className={classes.price}>{productDetail.price}</p>
-							<button className={classes.cart_btn}>Add to cart</button>
+							<p className={classes.price}>${+price.slice(1)}</p>
+							<button
+								type="button"
+								className={classes.cart_btn}
+								onClick={addToCartHandler}
+							>
+								Add to cart
+							</button>
 						</div>
 					</div>
 				</div>
