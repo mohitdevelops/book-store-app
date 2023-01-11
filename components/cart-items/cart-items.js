@@ -26,7 +26,13 @@ export default function CartItems(props) {
 	return (
 		<tr>
 			<td>
-				<Image src={image} alt={title} width={100} height={100} className={classes.itemImage} />
+				<Image
+					src={image}
+					alt={title}
+					width={100}
+					height={100}
+					className={classes.itemImage}
+				/>
 			</td>
 			<td className={classes.left}>{title}</td>
 			<td>${price.toFixed(2)}</td>
