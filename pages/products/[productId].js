@@ -29,7 +29,7 @@ export default function ProductDetails({ productDetail }) {
 			cartStoreAction.addProduct({
 				id: isbn13,
 				title,
-				price,
+				price: +price.slice(2),
 				image,
 			})
 		);
