@@ -13,8 +13,8 @@ const navbar = [
 	{ id: "nav2", url: "/posts", text: "Blogs" },
 ];
 
-export default function Header() {
-	const addedCartItems = useSelector((state) => state.cartItems.totalQuantity);
+export default function Header() {	
+	const totalCartItems = useSelector((state) => state.cartItems.items);
 	const [toggleMenu, setToggleMenu] = useState(true);
 
 	const toggleMenuHandler = () => {
@@ -46,7 +46,7 @@ export default function Header() {
 					</ul>
 					<Link href="/cart" className={classes.cart__items}>
 						<FaShoppingCart />
-						<span>{addedCartItems}</span>
+						<span>{totalCartItems.length}</span>
 					</Link>
 					<FaBars className={classes.menubar} onClick={toggleMenuHandler} />
 				</div>

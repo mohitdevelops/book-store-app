@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { useDispatch } from "react-redux";
 import { cartStoreAction } from "../../store/cart-items";
 import classes from "./cart.module.css";
@@ -23,12 +24,27 @@ export default function CartItems(props) {
 		);
 	};
 
+	console.log(`cart items ===== ${price}`);
+	console.log(`cart items ===== ${typeof price}`);
+	console.log(`cart items total price ===== ${totalPrice}`);
+	console.log(`cart items total price ===== ${typeof totalPrice}`);
+
 	return (
 		<tr>
 			<td>
-				<Image src={image} alt={title} width={100} height={100} className={classes.itemImage} />
+				<Link href={`/products/${id}`}>
+					<Image
+						src={image}
+						alt={title}
+						width={100}
+						height={100}
+						className={classes.itemImage}
+					/>
+				</Link>
 			</td>
-			<td className={classes.left}>{title}</td>
+			<td className={classes.left}>
+				<Link href={`/products/${id}`}>{title}</Link>
+			</td>
 			<td>${price.toFixed(2)}</td>
 			<td>
 				<div className={classes.quantity}>

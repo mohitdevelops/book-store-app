@@ -1,14 +1,15 @@
 import Head from "next/head";
 import Image from "next/image";
+import { FaShoppingCart } from "react-icons/fa";
 import { Fragment } from "react";
 import Header from "../../components/ui/Header";
 import Footer from "../../components/ui/Footer";
 import classes from "./product.module.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { cartStoreAction } from "../../store/cart-items";
+import Link from "next/link";
 
 export default function ProductDetails({ productDetail }) {
-	console.log(productDetail);
 	const dispatch = useDispatch();
 	const {
 		title,
@@ -24,16 +25,28 @@ export default function ProductDetails({ productDetail }) {
 		isbn13,
 	} = productDetail;
 
+	const priceNumber = Number(price.slice(1));
+	const cartItems = useSelector((state) => state.cartItems.items);
+	const isAdded = cartItems.some((el) => el.id === isbn13);
+
 	const addToCartHandler = () => {
 		dispatch(
 			cartStoreAction.addProduct({
 				id: isbn13,
 				title,
-				price,
+				price: priceNumber,
 				image,
 			})
 		);
 	};
+
+	console.log(isAdded);
+
+	const goToCartBtn = (
+		<Link href="/cart" className={classes.addedBtn}>
+			<FaShoppingCart /> Go to Cart
+		</Link>
+	);
 
 	return (
 		<Fragment>
@@ -95,13 +108,17 @@ export default function ProductDetails({ productDetail }) {
 								</tbody>
 							</table>
 							<p className={classes.price}>${+price.slice(1)}</p>
-							<button
-								type="button"
-								className={classes.cart_btn}
-								onClick={addToCartHandler}
-							>
-								Add to cart
-							</button>
+							{isAdded ? (
+								goToCartBtn
+							) : (
+								<button
+									type="button"
+									className={classes.cart_btn}
+									onClick={addToCartHandler}
+								>
+									Add to cart
+								</button>
+							)}
 						</div>
 					</div>
 				</div>
